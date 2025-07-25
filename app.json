@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "ZaTix Crew",
+    "slug": "zatix-crew",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "sdkVersion": "53.0.0",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "id.zatix.crew",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app needs camera access to scan QR codes for ticket validation"
+      }
+    },
+    "android": {
+      "package": "id.zatix.crew",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE"
+      ]
+    },
+    "web": {
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow ZaTix Crew to access your camera for QR code scanning."
+        }
+      ]
+    ]
+  }
+}
