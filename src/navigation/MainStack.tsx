@@ -1,8 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { MainStackParamList } from '../types';
 import ScannerScreen from '../screens/main/ScannerScreen';
 import SettingsScreen from '../screens/main/SettingsScreen';
+import CustomTabBar from '../components/CustomTabBar';
 import { COLORS } from '../constants';
 
 const Tab = createBottomTabNavigator<MainStackParamList>();
@@ -10,14 +13,9 @@ const Tab = createBottomTabNavigator<MainStackParamList>();
 export default function MainStack() {
   return (
     <Tab.Navigator
+      tabBar={props => <CustomTabBar {...props} />}
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: COLORS.primary,
-        tabBarInactiveTintColor: COLORS.textSecondary,
-        tabBarStyle: {
-          backgroundColor: COLORS.surface,
-          borderTopColor: COLORS.border,
-        },
       }}
     >
       <Tab.Screen
@@ -25,10 +23,6 @@ export default function MainStack() {
         component={ScannerScreen}
         options={{
           tabBarLabel: 'Scanner',
-          tabBarIcon: ({ color, size }) => (
-            // Will add icons later
-            <></>
-          ),
         }}
       />
       <Tab.Screen
@@ -36,10 +30,6 @@ export default function MainStack() {
         component={SettingsScreen}
         options={{
           tabBarLabel: 'Settings',
-          tabBarIcon: ({ color, size }) => (
-            // Will add icons later
-            <></>
-          ),
         }}
       />
     </Tab.Navigator>

@@ -11,7 +11,7 @@ import {
   
   ScrollView,
 } from '@gluestack-ui/themed';
-import { StatusBar } from 'react-native';
+import { StatusBar, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAuth } from '../../contexts/AuthContext';
 import { COLORS, SPACING } from '../../constants';
@@ -45,13 +45,23 @@ export default function SettingsScreen() {
             <Box
               bg="rgba(255, 255, 255, 0.1)"
               p={SPACING.md}
-              borderRadius={16}
+              borderRadius={15}
               borderWidth={1}
               borderColor="rgba(255, 255, 255, 0.2)"
+              alignItems="center"
+              justifyContent="center"
+              mb={SPACING.sm}
             >
-              <Text fontSize={32}>⚙️</Text>
+              <Image
+                source={require('../../../assets/zatix-putih-trans.png')}
+                style={{
+                  width: 120,
+                  height: 50,
+                  resizeMode: 'contain',
+                }}
+              />
             </Box>
-            <Heading size="2xl" color={COLORS.textLight} textAlign="center">
+            <Heading size="xl" color={COLORS.textLight} textAlign="center">
               Settings
             </Heading>
             <Text size="md" color="rgba(255, 255, 255, 0.8)" textAlign="center">

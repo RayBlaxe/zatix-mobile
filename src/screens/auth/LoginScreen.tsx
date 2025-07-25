@@ -17,7 +17,7 @@ import {
   Spinner,
 } from '@gluestack-ui/themed';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Platform, StatusBar, Dimensions } from 'react-native';
+import { Platform, StatusBar, Dimensions, Image } from 'react-native';
 import { useAuth } from '../../contexts/AuthContext';
 import { COLORS, SPACING, TEST_CREDENTIALS, API_CONFIG } from '../../constants';
 import { LoginRequest } from '../../types';
@@ -147,17 +147,21 @@ export default function LoginScreen() {
             <VStack space="md" alignItems="center" mb={SPACING.xl}>
               <Box
                 bg="rgba(255, 255, 255, 0.1)"
-                p={SPACING.lg}
+                p={SPACING.sm}
                 borderRadius={20}
                 borderWidth={1}
                 borderColor="rgba(255, 255, 255, 0.2)"
+                alignItems="center"
+                justifyContent="center"
               >
-                <Heading size="3xl" color={COLORS.textLight} textAlign="center">
-                  ZaTix
-                </Heading>
-                <Heading size="xl" color={COLORS.secondary} textAlign="center">
-                  Crew
-                </Heading>
+                <Image
+                  source={require('../../../assets/zatix-putih-trans.png')}
+                  style={{
+                    width: 160,
+                    height: 80,
+                    resizeMode: 'contain',
+                  }}
+                />
               </Box>
               <Text size="lg" color="rgba(255, 255, 255, 0.8)" textAlign="center">
                 Professional Ticket Validation

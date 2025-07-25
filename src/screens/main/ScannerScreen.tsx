@@ -10,7 +10,7 @@ import {
   AlertCircleIcon,
   CheckCircleIcon,
 } from '@gluestack-ui/themed';
-import { StatusBar, Dimensions, Alert } from 'react-native';
+import { StatusBar, Dimensions, Alert, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS, SPACING } from '../../constants';
 import QRScanner from '../../components/QRScanner';
@@ -138,7 +138,27 @@ export default function ScannerScreen() {
         {/* Header */}
         <Box pt={60} px={SPACING.lg}>
           <VStack space="md" alignItems="center">
-            <Heading size="2xl" color={COLORS.textLight} textAlign="center">
+            {/* Logo */}
+            <Box
+              bg="rgba(255, 255, 255, 0.1)"
+              p={SPACING.md}
+              borderRadius={15}
+              borderWidth={1}
+              borderColor="rgba(255, 255, 255, 0.2)"
+              alignItems="center"
+              justifyContent="center"
+              mb={SPACING.sm}
+            >
+              <Image
+                source={require('../../../assets/zatix-putih-trans.png')}
+                style={{
+                  width: 120,
+                  height: 50,
+                  resizeMode: 'contain',
+                }}
+              />
+            </Box>
+            <Heading size="xl" color={COLORS.textLight} textAlign="center">
               QR Scanner
             </Heading>
             <Text size="md" color="rgba(255, 255, 255, 0.8)" textAlign="center">
