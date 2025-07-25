@@ -71,7 +71,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       dispatch({ type: 'AUTH_START' });
       
+      console.log('AuthContext: Attempting login with API:', {
+        baseURL: 'https://api.zatix.id/api',
+        endpoint: '/login'
+      });
+      
       const response = await apiService.login(credentials);
+      
+      console.log('AuthContext: Login response received:', {
+        success: response.success,
+        hasToken: !!response.data?.access_token,
+        hasUser: !!response.data?.user
+      });
       
       if (response.success) {
         const { access_token, user } = response.data;
@@ -90,9 +101,36 @@ export function AuthProvider({ children }: AuthProviderProps) {
       } else {
         throw new Error(response.message || 'Login failed');
       }
-    } catch (error) {
+    } catch (error: any) {
+      console.error('AuthContext: Login error:', {
+        message: error.message,
+        code: error.code,
+        status: error.response?.status,
+        data: error.response?.data
+      });
+      
       dispatch({ type: 'AUTH_FAILURE' });
-      throw error;
+      
+      // Re-throw with more specific error information
+      if (error.response) {
+        // Server responded with error status
+        const status = error.response.status;
+        if (status === 401) {
+          throw new Error('Invalid email or password');
+        } else if (status === 404) {
+          throw new Error('Login service not found');
+        } else if (status === 500) {
+          throw new Error('Server error. Please try again later');
+        } else {
+          throw new Error(error.response.data?.message || `Server error (${status})`);
+        }
+      } else if (error.request) {
+        // Request was made but no response received
+        throw new Error('Network error. Please check your internet connection');
+      } else {
+        // Something else happened
+        throw error;
+      }
     }
   };
 

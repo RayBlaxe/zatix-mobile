@@ -1,11 +1,13 @@
 // API Configuration
 export const API_CONFIG = {
-  BASE_URL: process.env.EXPO_PUBLIC_API_URL || 'https://api.zatix.id',
+  BASE_URL: process.env.EXPO_PUBLIC_API_URL || 'https://api.zatix.id/api',
   TIMEOUT: 10000,
   HEADERS: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
   },
+  // Development mode - set to false to use real API
+  DEV_MODE: false,
 };
 
 // Test Credentials
@@ -31,18 +33,25 @@ export const STORAGE_KEYS = {
 
 // Color Palette
 export const COLORS = {
-  primary: '#1e40af',
-  primaryDark: '#1e3a8a',
-  secondary: '#f59e0b',
-  success: '#16a34a',
-  error: '#dc2626',
-  warning: '#f59e0b',
-  info: '#0ea5e9',
-  background: '#f8fafc',
-  surface: '#ffffff',
-  text: '#1f2937',
-  textSecondary: '#6b7280',
-  border: '#e5e7eb',
+  primary: '#002547', // HSL(209 100% 14%) - Deep blue
+  primaryDark: '#002547', // Darker variant
+  primaryLight: '#1e5fa3', // Lighter variant
+  secondary: '#E19A3C', // Complementary cyan
+  accent: '#f72585', // Accent pink for highlights
+  success: '#06d6a0', // Success green
+  error: '#ef476f', // Error red
+  warning: '#ffd166', // Warning yellow
+  info: '#118ab2', // Info blue
+  background: '#f8fafc', // Light background
+  backgroundDark: '#0a1628', // Dark variant of primary
+  surface: '#ffffff', // White surface
+  surfaceDark: '#1a2332', // Dark surface
+  text: '#003d7a', // Primary color for text
+  textSecondary: '#4a6fa5', // Secondary text
+  textLight: '#ffffff', // Light text for dark backgrounds
+  border: '#e1e8ed', // Light border
+  borderDark: '#2d3748', // Dark border
+  shadow: 'rgba(0, 61, 122, 0.1)', // Shadow with primary color
 };
 
 // Spacing

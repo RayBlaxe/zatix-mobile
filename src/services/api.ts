@@ -49,7 +49,7 @@ class ApiService {
   }
 
   async login(credentials: LoginRequest): Promise<LoginResponse> {
-    const response: AxiosResponse<LoginResponse> = await this.api.post('/auth/login', credentials);
+    const response: AxiosResponse<LoginResponse> = await this.api.post('/login', credentials);
     return response.data;
   }
 
